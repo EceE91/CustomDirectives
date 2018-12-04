@@ -1,0 +1,24 @@
+<div class="panel panel-primary"> <!-- from bootstrap css -->
+ <div class="panel-heading">
+  {{user.name}} 
+ </div>
+ <div class="panel-body">
+    <div ng-show='!!user.address'> 
+    <h4>Address:</h4>
+      {{user.address.street}}, 
+      {{user.address.city}},
+      {{user.address.planet}}</div>
+  
+    <br/>
+      <h4>Friends:</h4> 
+      <ul>
+        <li ng-repeat='friend in user.friends'> {{friend}} </li> 
+      </ul>
+      
+      <div ng-show="!!user.rank">
+        Rank: {{user.rank}}
+      </div>
+      <button ng-show="!user.rank" class="btn btn-succcess" ng-click="knightMe(user)">Knigt me</button>
+      
+ </div>
+</div>
