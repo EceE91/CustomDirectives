@@ -1,24 +1,25 @@
-<div class="panel panel-primary"> <!-- from bootstrap css -->
- <div class="panel-heading">
-  {{user.name}} 
- </div>
- <div class="panel-body">
-    <div ng-show='!!user.address'> 
-    <h4>Address:</h4>
-      {{user.address.street}}, 
-      {{user.address.city}},
-      {{user.address.planet}}</div>
-  
+<div class="panel panel-primary">
+  <!-- from bootstrap css -->
+  <div class="panel-heading" ng-click="collapse()">
+    {{user.name}}
+  </div>
+  <div class="panel-body" ng-hide="collapsedState">
+    <address></address>
+
     <br/>
-      <h4>Friends:</h4> 
-      <ul>
-        <li ng-repeat='friend in user.friends'> {{friend}} </li> 
-      </ul>
-      
-      <div ng-show="!!user.rank">
-        Rank: {{user.rank}}
-      </div>
-      <button ng-show="!user.rank" class="btn btn-succcess" ng-click="knightMe(user)">Knigt me</button>
-      
- </div>
+    <h4>Friends:</h4>
+    <ul>
+      <li ng-repeat='friend in user.friends'> {{friend}}
+       <remove-friend method="removeFriend(friend)"></remove-friend>
+      </li>
+    </ul>
+
+    <div ng-show="!!user.rank">
+      Rank: {{user.rank}}
+    </div>
+    <button ng-show="!user.rank" class="btn btn-succcess" ng-click="knightMe(user)">Knigt me</button>
+
+  </div>
 </div>
+
+<!-- thanks to <div ng-show='!!user.address'> directive, if user does not contain an object called address the whole div dissappears -->
